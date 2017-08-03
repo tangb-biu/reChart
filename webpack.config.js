@@ -4,7 +4,9 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var InlineManifestWebpack = require('inline-manifest-webpack-plugin')
+var WebpackChunkHash = require('webpack-chunk-hash')
+var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
+var InlineManifestWebpack = require('inline-manifest-webpack-plugin');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isPro = nodeEnv === 'production';
 
@@ -12,8 +14,9 @@ console.log("The current env is: ", isPro ? 'production' : 'development');
 
 var plugins = [
 	new ExtractTextPlugin('styles.css'),
+
 	new webpack.optimize.CommonsChunkPlugin({
-		name: 'vendor',
+		name: ['vendor'],
 		minChunks: function(module) {
 			// 提取node_modules 中的公共代码
 			return module.context && module.context.indexOf('node_modules') !== -1
@@ -24,11 +27,14 @@ var plugins = [
 			'NODE_ENV': JSON.stringify(nodeEnv)
 		}
 	}),
+
+	new WebpackChunkHash(),
+
 	new HtmlWebpackPlugin({
 		filename: `${__dirname}/index.html`,
       	template: `${__dirname}/index.html`,
-      	inject: true
 	}),
+
 	new InlineManifestWebpack()
 ]
 
@@ -98,7 +104,7 @@ module.exports = {
 			{
 				test: /\.(less|css)$/,
 				use: ExtractTextPlugin.extract({
-					use: ['css-loader', 'less-loader', 'postcss-loader']
+					use: ['css-loader', 'less-loader']
 				})
 			},
 			{
