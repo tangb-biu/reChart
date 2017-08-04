@@ -1,5 +1,16 @@
-h1 {
-  color: #336699;
+.normal-enter {
+  opacity: 0.01;
+  transition: opacity 0.5s ease-in;
+}
+.normal-enter.normal-enter-active {
+  opacity: 1;
+}
+.example-leave {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+.example-leave.example-leave-active {
+  opacity: 0.01;
 }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZXMuY3NzIiwic291cmNlUm9vdCI6IiJ9*/

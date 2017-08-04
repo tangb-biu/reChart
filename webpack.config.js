@@ -83,7 +83,7 @@ module.exports = {
 			path.join(__dirname, 'src')
 		],
 		alias: {
-			
+			'@': path.join(__dirname, 'src')
 		}
 	},
 

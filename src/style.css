@@ -1,0 +1,18 @@
+.normal-enter {
+	opacity: 0.01;
+	transition: transform 1s,opacity 1s;
+	transform: rotate(180deg);
+}
+
+.normal-enter.normal-enter-active {
+	opacity: 1;
+}
+
+.example-leave {
+	opacity: 1;
+	transition: opacity .1s ease;
+}
+
+.example-leave.example-leave-active {
+	opacity: 0.01;
+}
