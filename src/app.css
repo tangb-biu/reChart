@@ -1,6 +1,6 @@
 .normal-enter {
 	opacity: 0.01;
-	transition: opacity 1s;
+	transition: opacity .5s ease-in;
 }
 
 .normal-enter.normal-enter-active {
@@ -9,7 +9,7 @@
 
 .example-leave {
 	opacity: 1;
-	transition: opacity .1s ease;
+	transition: opacity .5s ease-in;
 }
 
 .example-leave.example-leave-active {

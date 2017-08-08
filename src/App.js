@@ -4,9 +4,13 @@ import { bindActionCreators } from 'redux'
 import { Route, BrowserRouter as Router , Link } from 'react-router-dom'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import createHistory from 'history/createHashHistory'
+import '@/bootstrap.min.css'
 import '@/style'
 
 import * as globalActions from '@/actions/global'
+
+
+import Header from '@/components/Home/Header'
 const history = createHistory()
 
 @connect(
@@ -16,7 +20,7 @@ const history = createHistory()
 class App extends Component {
 	render() {
 		const { animate } = this.props.globals;
-		console.log(animate)
+		console.log(this.props)
 		return (
 			<Router history={history}>
 				<Route render={({ location }) => {
@@ -39,14 +43,7 @@ class App extends Component {
 										<Link to="/chart/1">柱状图</Link> 
 									</div>
 								}/>
-								<Route loaction={location} path="/chartList" render={
-									() =>
-									<div style={{background: '#CC0033'}}>
-										<h1>图表列表</h1>
-										<Link to="/">首页</Link><br/>
-										<Link to="/chart/1">柱状图</Link> 
-									</div>
-								} />
+								<Route loaction={location} path="/chartList" component={Header}/>
 								<Route location={location} path="/chart/:chartId" render={
 									() =>
 									<div style={{background: '#FF6633'}}>
