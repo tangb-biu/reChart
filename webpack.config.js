@@ -109,13 +109,7 @@ module.exports = {
 			},
 			{
 				test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-				use: [{
-					loader: 'url-loader',
-					options: {
-						limit: 1000,
-						name: 'file/[md5:hash:base64:10].[ext]'
-					}
-				}]
+				use: ['url-loader', 'file-loader']
 			}
 		]
 	},

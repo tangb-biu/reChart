@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux'
 import { Route, BrowserRouter as Router , Link } from 'react-router-dom'
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import createHistory from 'history/createHashHistory'
-import '@/bootstrap.min.css'
-import '@/style'
+import '@/styles/bootstrap.css'
+import '@/styles/style.css'
 
 import * as globalActions from '@/actions/global'
 
