@@ -10,7 +10,7 @@ import '@/styles/style.css'
 import * as globalActions from '@/actions/global'
 
 
-import Header from '@/components/Home/Header'
+import Header from '@/components/Header/Header'
 const history = createHistory()
 
 @connect(
