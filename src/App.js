@@ -11,6 +11,7 @@ import * as globalActions from '@/actions/global'
 
 
 import Header from '@/components/Header/Header'
+import Home from '@/containers/Home/Home'
 const history = createHistory()
 
 @connect(
@@ -37,13 +38,9 @@ class App extends Component {
 							<div key={location.pathname}>
 								<Route location={location} exact path="/" render={
 									() => 
-									<div style={{background: '#993366'}}>
-										<h1>首页</h1>
-										<Link to="/chartList">图表列表</Link><br/>
-										<Link to="/chart/1">柱状图</Link> 
-									</div>
+									<Home chartData={this.props.home.response}/>
 								}/>
-								<Route loaction={location} path="/chartList" component={Header}/>
+								<Route loaction={location} path="/example" component={Header}/>
 								<Route location={location} path="/chart/:chartId" render={
 									() =>
 									<div style={{background: '#FF6633'}}>
