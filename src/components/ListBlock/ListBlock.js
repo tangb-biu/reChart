@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ListItem from '../ListItem/ListItem'
+import './index.less'
 class HomeListBlock extends Component {
 	constructor(props) {
 		super(props)
@@ -9,8 +10,8 @@ class HomeListBlock extends Component {
 		return (
 			<div className="chart-list-panel">
 			{
-				this.props.types.map((chart) => 
-					<ListItem name={chart.name} items={chart.items}></ListItem>
+				this.props.types.map((chart, index) => 
+					<ListItem name={chart.name} items={chart.items} key={index}></ListItem>
 				)
 			}
 			</div>

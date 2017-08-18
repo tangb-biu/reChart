@@ -4,7 +4,7 @@ const homeData = [
 		items: [
 			{
 				name: '气泡图',
-				imgsrc: 'http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png'
+				imgSrc: 'http://echarts.baidu.com/gallery/data/thumb/bubble-gradient.png'
 			},
 			{
 				name: '全国空气质量',

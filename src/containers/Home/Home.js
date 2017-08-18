@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from '@/components/Header/Header'
 import ListBlock from '@/components/ListBlock/ListBlock'
-
+import './index.less'
 class Home extends Component {
 	render() {
 		return(
