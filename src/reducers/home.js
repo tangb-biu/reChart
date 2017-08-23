@@ -41,10 +41,13 @@ const homeData = [
 ]
 
 import { handleActions } from 'redux-actions'
-import { loadData } from '@/actions/global'
+import { loadData, loadingData } from '@/actions/global'
 
 export const home = handleActions({
 	[loadData] (state, {payload: {status, response}}) {
+		return Object.assign({}, state, {status, response})
+	},
+	[loadingData] (state, {payload: {status, response}}) {
 		return Object.assign({}, state, {status, response})
 	}
 }, {status: 'loaded', response: homeData})

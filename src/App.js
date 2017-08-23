@@ -39,7 +39,10 @@ class App extends Component {
 							<div key={location.pathname}>
 								<Route location={location} exact path="/" render={
 									() => 
-									<Home chartData={this.props.home.response}/>
+									<div>
+										<Home chartData={this.props.home.response}/>
+										<a onClick={() => {this.props.loadingData('loading');;this.props.loadData('loaded');}}>加载数据</a>
+									</div>
 								}/>
 								<Route loaction={location} path="/document" component={Document}/>
 								<Route location={location} path="/example" component={Example}/>
