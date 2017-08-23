@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import classname from 'classnames'
 import './header.less'
 import githubImg from './github.png'
@@ -7,7 +8,8 @@ export default class Header extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			hide: true
+			hide: true,
+			currentPath: '/'
 		}
 	}
 
@@ -32,10 +34,10 @@ export default class Header extends Component {
 					</div>
 					<div className={classname("navbar-collapse", {hide: this.state.hide})}>
 						<ul className="nav navbar-nav navbar-left">
-							<li className="active"><a>首页</a></li>
-							<li><a href="#">文档</a></li>
-							<li><a href="#">实例</a></li>
-							<li><a>关于</a></li>
+							<li className={this.state.currentPath == '/' ? 'active' : ''} onClick={() => this.setState({currentPath: '/'})}><Link to="/">首页</Link></li>
+							<li className={this.state.currentPath == '/document' ? 'active' : ''} onClick={() => this.setState({currentPath: '/document'})}><Link to="/document">文档</Link></li>
+							<li className={this.state.currentPath == '/example' ? 'active' : ''} onClick={() => this.setState({currentPath: '/example'})}><Link to="/example">实例</Link></li>
+							<li className={this.state.currentPath == '/about' ? 'active' : ''} onClick={() => this.setState({currentPath: '/about'})}><Link to="/about">关于</Link></li>
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
 							<li>

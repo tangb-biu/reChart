@@ -5,10 +5,13 @@ import './index.less'
 class Home extends Component {
 	render() {
 		return(
-			<div id="main">
+			<div>
 				<Header></Header>
 				<div className="chart-container">
-					<ListBlock types={this.props.chartData}/>
+					{this.props.chartData.length > 0 
+						? <ListBlock types={this.props.chartData}/>
+						: <h1 style={{'marginTop': '60px', 'textAlign': 'center'}}>数据加载中。。。。</h1>
+					}
 				</div>
 			</div>
 		)

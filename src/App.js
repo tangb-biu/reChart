@@ -9,9 +9,10 @@ import '@/styles/style.css'
 
 import * as globalActions from '@/actions/global'
 
-
-import Header from '@/components/Header/Header'
 import Home from '@/containers/Home/Home'
+import Document from '@/containers/Document/Document'
+import Example from '@/containers/Example/Example'
+import About from '@/containers/About/About'
 const history = createHistory()
 
 @connect(
@@ -21,7 +22,7 @@ const history = createHistory()
 class App extends Component {
 	render() {
 		const { animate } = this.props.globals;
-		console.log(this.props)
+		console.log(this.props);
 		return (
 			<Router history={history}>
 				<Route render={({ location }) => {
@@ -40,15 +41,9 @@ class App extends Component {
 									() => 
 									<Home chartData={this.props.home.response}/>
 								}/>
-								<Route loaction={location} path="/example" component={Header}/>
-								<Route location={location} path="/chart/:chartId" render={
-									() =>
-									<div style={{background: '#FF6633'}}>
-										<h1>柱状图</h1>
-										<Link to="/">首页</Link> <br/>
-										<Link to="/chartList">图表列表</Link>
-									</div>
-								} />
+								<Route loaction={location} path="/document" component={Document}/>
+								<Route location={location} path="/example" component={Example}/>
+								<Route location={location} path="/about" component={About} />
 							</div>
 						</CSSTransitionGroup>
 					)
