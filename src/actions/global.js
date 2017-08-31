@@ -1,13 +1,14 @@
 import { createActions } from 'redux-actions'
 
-export const { currentAnimate, loadData, loadingData} = createActions({
+export const { currentAnimate, loadData, loadingData, currentPage} = createActions({
 	CURRENT_ANIMATE: animate => ({ animate }),
 	LOAD_DATA: (status, response) => {
 		return sleep()
 	},
 	LOADING_DATA: (status) => {
 		return {status: 'loading', response: []};
-	}
+	},
+	CURRENT_PAGE: (curpage) => ({curpage})
 })
 
 function sleep() {

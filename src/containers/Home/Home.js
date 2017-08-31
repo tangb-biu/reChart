@@ -6,7 +6,6 @@ class Home extends Component {
 	render() {
 		return(
 			<div>
-				<Header></Header>
 				<div className="chart-container">
 					{this.props.chartData.length > 0 
 						? <ListBlock types={this.props.chartData}/>

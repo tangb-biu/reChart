@@ -9,6 +9,7 @@ import '@/styles/style.css'
 
 import * as globalActions from '@/actions/global'
 
+import Header from '@/components/Header/Header'
 import Home from '@/containers/Home/Home'
 import Document from '@/containers/Document/Document'
 import Example from '@/containers/Example/Example'
@@ -20,35 +21,40 @@ const history = createHistory()
 	dispatch => bindActionCreators(globalActions, dispatch)
 )
 class App extends Component {
+
 	render() {
 		const { animate } = this.props.globals;
-		console.log(this.props);
 		return (
 			<Router history={history}>
 				<Route render={({ location }) => {
 					return (
+						/*
 						<CSSTransitionGroup
 							transitionName={animate}
-							transitionEnter={true}
+							transitionEnter={false}
 							transitionLeave={false}
-							transitionAppear={true}
-							transitionEnterTimeout={400}
-							transitionLeaveTimeout={400}
+							transitionAppear={false}
+							transitionEnterTimeout={100}
+							transitionLeaveTimeout={100}
 							transitionAppearTimeout={100}
 						>
-							<div key={location.pathname}>
-								<Route location={location} exact path="/" render={
-									() => 
-									<div>
-										<Home chartData={this.props.home.response}/>
-										<a onClick={() => {this.props.loadingData('loading');;this.props.loadData('loaded');}}>加载数据</a>
-									</div>
-								}/>
-								<Route loaction={location} path="/document" component={Document}/>
-								<Route location={location} path="/example" component={Example}/>
-								<Route location={location} path="/about" component={About} />
-							</div>
+						*/
+						<div key={location.pathname}>
+							<Header pathname={location.pathname}></Header>
+							<Route location={location} exact path="/" render={
+								() => 
+								<div>
+									<Home chartData={this.props.home.response}/>
+									<a onClick={() => {this.props.loadingData('loading');this.props.loadData('loaded');}}>加载数据</a>
+								</div>
+							}/>
+							<Route loaction={location} path="/document" component={Document}/>
+							<Route location={location} path="/example" component={Example}/>
+							<Route location={location} path="/about" component={About} />
+						</div>
+						/*
 						</CSSTransitionGroup>
+						*/
 					)
 				}}/>
 			</Router>

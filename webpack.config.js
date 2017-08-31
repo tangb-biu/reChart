@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackChunkHash = require('webpack-chunk-hash')
 var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 var InlineManifestWebpack = require('inline-manifest-webpack-plugin');
-var nodeEnv = process.env.NODE_ENV.replace(/^\s|\s$/g, '') || 'development';
+var nodeEnv = process.env.NODE_ENV || 'development';
 const isPro = nodeEnv === 'production';
 nodeEnv = nodeEnv.replace(/^\s|\s$/g, '');
 console.log("The current env is: ", isPro ? 'production' : 'development');
