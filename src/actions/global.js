@@ -1,12 +1,10 @@
 import { createActions } from 'redux-actions'
+import fetch from 'isomorphic-fetch'
 
-export const { currentAnimate, loadData, loadingData, currentPage} = createActions({
+export const { currentAnimate, loadData, currentPage} = createActions({
 	CURRENT_ANIMATE: animate => ({ animate }),
 	LOAD_DATA: (status, response) => {
-		return sleep()
-	},
-	LOADING_DATA: (status) => {
-		return {status: 'loading', response: []};
+		return {status: status, response: response}
 	},
 	CURRENT_PAGE: (curpage) => ({curpage})
 })
@@ -17,6 +15,25 @@ function sleep() {
 			resolve({status: 'loaded', response: homeData});
 		}, 2000)
 	});
+}
+
+export const fetchTopics = options => (dispatch) => {
+  dispatch(loadData('loading', []))
+  const BASIC_URL = 'https://ruby-china.org/api/v3'
+  const type = 'TOPICS'
+  let url = `${BASIC_URL}/topics`
+  let node = ''
+  if (options && options.node_id){
+    node = `node_id=${options.node_id}`
+  }
+  if (options) {
+    url = `${BASIC_URL}/topics?${node}&limit=${options.limit||20}&type=${options.type||'last_actived'}&offset=${options.offset||0}`
+  }
+  console.log('url', url)
+
+  return fetch(url)
+    .then(response => response.json())
+    .then(json => dispatch(loadData('loaded', homeData)))
 }
 
 const homeData = [
