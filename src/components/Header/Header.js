@@ -4,9 +4,11 @@ import classname from 'classnames'
 import './header.less'
 import githubImg from './github.png'
 import logoImg from './logo.png'
+import downloadImg from './download.png'
 import * as globalActions from '@/actions/global'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import html2canvas from 'html2canvas'
 
 @connect(
 	state => state,
@@ -24,6 +26,27 @@ export default class Header extends Component {
 
 	componentDidMount() {
 
+	}
+
+	html2ToImg(dom) {
+		html2canvas(dom, {
+	  		useCORS: true,
+	  		background: '#fff',
+	  		origin: 'http://echarts.baidu.com',
+	  		onrendered: (canvas) => {
+	  			const $a = document.createElement('a');
+	  			canvas.style.backgroundColor = '#fff';
+	  			$a.download = 'pages.jpg';
+	  			$a.setAttribute('target', '_blank');
+	  			$a.href = canvas.toDataURL();
+	  			const evt = new MouseEvent('click', {
+	                view: window,
+	                bubbles: true,
+	                cancelable: false
+	            });
+	            $a.dispatchEvent(evt);
+	  		}
+		})
 	}
 
 	render() {
@@ -49,6 +72,14 @@ export default class Header extends Component {
 							<li className={this.props.globals.curpage == '/about' ? 'active' : ''} onClick={() => this.props.currentPage('/about')}><Link to="/about">关于</Link></li>
 						</ul>
 						<ul className="nav navbar-nav navbar-right">
+							<li>
+								<a onClick={(e) => {
+									const dom = document.getElementsByClassName('all-screen')[0];
+									this.html2ToImg(dom);
+								}}>
+									<img src={downloadImg} width="20"/>
+								</a>
+							</li>
 							<li>
 								<a href="https://github.com/ecomfe/echarts" target="_blank">
 									<img src={githubImg} width="20"/>

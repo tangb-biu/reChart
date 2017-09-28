@@ -39,7 +39,7 @@ class App extends Component {
 							transitionAppearTimeout={100}
 						>
 						*/
-						<div key={location.pathname}>
+						<div key={location.pathname} className="all-screen">
 							<Header pathname={location.pathname}></Header>
 							<Route location={location} exact path="/" render={
 								() => 
