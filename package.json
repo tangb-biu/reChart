@@ -21,9 +21,13 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
+<<<<<<< HEAD
     "echarts": "^3.7.1",
     "html2canvas": "^0.5.0-beta4",
     "jquery": "^3.2.1",
+=======
+    "isomorphic-fetch": "^2.2.1",
+>>>>>>> 01764e04f47d6596d6db2dbb114f118ea91c23b5
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-hot-loader": "^3.0.0-beta.7",

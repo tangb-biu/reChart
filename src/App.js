@@ -24,6 +24,7 @@ class App extends Component {
 
 	render() {
 		const { animate } = this.props.globals;
+		console.log(this)
 		return (
 			<Router history={history}>
 				<Route render={({ location }) => {
@@ -45,7 +46,7 @@ class App extends Component {
 								() => 
 								<div>
 									<Home chartData={this.props.home.response}/>
-									<a onClick={() => {this.props.loadingData('loading');this.props.loadData('loaded');}}>加载数据</a>
+									<a onClick={() => this.props.fetchTopics()}>加载数据</a>
 								</div>
 							}/>
 							<Route loaction={location} path="/document" component={Document}/>

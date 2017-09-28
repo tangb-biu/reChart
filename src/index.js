@@ -4,7 +4,7 @@ import { AppContainer } from 'react-hot-loader'
 
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-//import thunk from 'redux-thunk'
+import thunk from 'redux-thunk'
 import promiseMiddleware from 'redux-promise';
 import createLogger from 'redux-logger'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
@@ -16,7 +16,7 @@ import App from '@/App'
 
 const history = createHistory()
 const middleware = routerMiddleware(history)
-const middlewares = [promiseMiddleware, middleware, createLogger]
+const middlewares = [thunk, promiseMiddleware, middleware, createLogger]
 const store = createStore(rootReducer, applyMiddleware(...middlewares))
 
 ReactDOM.render(
